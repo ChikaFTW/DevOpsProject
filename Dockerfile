@@ -7,5 +7,5 @@ RUN mvn package -DskipTests
 
 FROM openjdk:11
 EXPOSE 8082
-COPY --from=build /app/target/DevOpsBackEnd.jar DevOpsBackEnd.jar
-ENTRYPOINT ["java", "-jar", "/DevOpsBackEnd.jar"]
+COPY --from=build /app/target/Devopsbackend.jar Devopsbackend.jar
+ENTRYPOINT ["java", "-jar", "/Devopsbackend.jar"]
