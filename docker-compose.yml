@@ -2,7 +2,7 @@ version: "3"
 services:
     mysqldb:
         image: mysql
-        container_name: mysqlFTW
+        container_name: mysql
         restart: unless-stopped
         ports:
             - "3306:3306"
@@ -14,7 +14,7 @@ services:
           
     backend:
         image: chikaftw/devopsregistry:firstpush
-        container_name: springFTW
+        container_name: spring
         ports:
             - "8082:8082"
         restart: unless-stopped
