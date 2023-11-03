@@ -41,7 +41,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- starting to have a prob with docker compose up  https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
+        <!-- starting again to have a prob with docker compose up  https://mvnrepository.com/artifact/org.springdoc/springdoc-openapi-ui -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
