@@ -11,9 +11,15 @@ services:
           MYSQL_DATABASE: devops
           MYSQL_USER: mysql
           MYSQL_PASSWORD: root
-          
+    #frontend:
+     # image: chikaftw/devopsfront:latest
+      #container_name: angular
+      #ports :
+       # - 3000:3000
+      #restarts: unless-stopped
+         
     backend:
-        image: chikaftw/devopsregistry:firstpush
+        image: chikaftw/devopsregistry:latest
         container_name: spring
         ports:
             - "127.0.0.1:8082:8082"
@@ -26,4 +32,4 @@ services:
           SPRING_DATASOURCE_PASSWORD: root
 
 volumes:
-  db:
+  db: {}
