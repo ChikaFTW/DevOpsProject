@@ -2,6 +2,7 @@ package tn.esprit.devops_project.services;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import tn.esprit.devops_project.services.Iservices.IStockService;
 import tn.esprit.devops_project.entities.Stock;
 import tn.esprit.devops_project.repositories.StockRepository;
@@ -10,7 +11,8 @@ import java.util.List;
 
 @Service
 @AllArgsConstructor
-public class StockServiceImpl implements IStockService {
+public class
+StockServiceImpl implements IStockService {
 
    private final StockRepository stockRepository;
 
@@ -23,7 +25,7 @@ public class StockServiceImpl implements IStockService {
     public Stock retrieveStock(Long id) {
         return stockRepository.findById(id).orElseThrow(() -> new NullPointerException("Stock not found"));
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @Override
     public List<Stock> retrieveAllStock() {
         return stockRepository.findAll();
