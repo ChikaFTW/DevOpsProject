@@ -3,6 +3,7 @@ package tn.esprit.devops_project.services;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import tn.esprit.devops_project.services.Iservices.IProductService;
 import tn.esprit.devops_project.entities.Product;
 import tn.esprit.devops_project.entities.ProductCategory;
@@ -33,6 +34,7 @@ public class ProductServiceImpl implements IProductService {
     }
 
     @Override
+    @CrossOrigin(origins = "http://localhost:4200")
     public List<Product> retreiveAllProduct() {
         return productRepository.findAll();
     }
