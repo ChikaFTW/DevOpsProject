@@ -11,20 +11,15 @@ services:
           MYSQL_DATABASE: devops
           MYSQL_USER: mysql
           MYSQL_PASSWORD: root
-    frontend:
-      image: chikaftw/devopsfront2:latest
-      container_name: angular
-      ports :
-        - 4200:4200
-      restarts: unless-stopped
-      depends_on:
-        - spring
-         
+        volumes:
+         - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+        networks:
+         - dev-net 
     backend:
         image: chikaftw/devopsregistry:latest
         container_name: spring
         ports:
-            - "127.0.0.1:8082:8082"
+            - "8082:8082"
         restart: unless-stopped
         depends_on:
             - mysqldb
@@ -32,6 +27,20 @@ services:
           SPRING_DATASOURCE_URL: jdbc:mysql://mysqldb:3306/devops?allowPublicKeyRetrieval=true&useSSL=false
           SPRING_DATASOURCE_USERNAME: root
           SPRING_DATASOURCE_PASSWORD: root
+        networks:
+         - dev-net          
+          
+          
+    frontend:
+      image: chikaftw/devopsfront2:latest
+      container_name: angular
+      ports :
+        - "4200:4200"
+      restart: unless-stopped
+      depends_on:
+          - backend
 
+networks:
+  dev-net:
 volumes:
   db: {}
